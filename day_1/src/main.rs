@@ -8,7 +8,7 @@ lazy_static! {
 }
 
 fn main() {
-    let file_str = include_str!("../small_input.txt");
+    let file_str = include_str!("../input.txt");
     let mut file_vec = file_str.split('\n').collect::<Vec<&str>>();
     file_vec.pop();
     let _: Vec<i32> = file_vec
