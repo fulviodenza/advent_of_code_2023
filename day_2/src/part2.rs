@@ -16,7 +16,6 @@ fn main() {
         sets.extend(g.unwrap().skip(1).flat_map(|s| s.trim().split(';')));
         for c in sets.iter() {
             let single_set = c.trim().split(',').collect::<Vec<&str>>();
-            println!("single set: {:?}", single_set);
             is_possible(single_set, mins);
         }
         acc += mins[0] * mins[1] * mins[2];
