@@ -19,10 +19,6 @@ fn main() {
 
             let mut index_position = 0;
 
-            // Second part
-            // let mut tracking_string = "".to_string();
-            // let mut digit_position = 0;
-
             for (i, c) in (0_i32..).zip(s.chars()) {
                 let n = c as u8;
                 if (48..=57).contains(&n) && first == 0 {
@@ -31,27 +27,8 @@ fn main() {
 
                     break;
                 }
-
-                // Second part
-                // let number: String;
-                // let continuing: bool;
-                // (number, tracking_string, continuing) = discovering_digit_word(
-                //     c,
-                //     digit_position,
-                //     &mut tracking_string,
-                //     DIGITS_STRING.to_vec(),
-                // );
-                // if continuing {
-                //     digit_position += 1;
-                // }
-                // if !number.is_empty() {
-                //     first = word_to_number(&number).unwrap();
-                //     break;
-                // }
             }
 
-            // digit_position = 0;
-            // tracking_string = "".to_string();
             for (j, c) in (0_i32..).zip(
                 s.chars()
                     .collect::<Vec<_>>()
@@ -68,24 +45,6 @@ fn main() {
                     last = n;
                     break;
                 }
-
-                // Second part
-                // let number: String;
-                // let mut continuing: bool = false;
-                // (number, tracking_string, continuing) = discovering_digit_word(
-                //     c,
-                //     digit_position,
-                //     &mut tracking_string,
-                //     DIGITS_STRING_REVERSED.to_vec(),
-                // );
-                // if continuing {
-                //     digit_position += 1;
-                // }
-                // if !number.is_empty() {
-                //     last = word_to_number(&number).unwrap();
-
-                //     break;
-                // }
             }
 
             if last == 0 {
@@ -104,52 +63,3 @@ fn main() {
         })
         .collect();
 }
-
-// Second part
-// fn discovering_digit_word(
-//     c: char,
-//     i: usize,
-//     tracking_string: &mut String,
-//     vector: Vec<&'static str>,
-// ) -> (String, String, bool) {
-//     let mut ts: String = tracking_string.to_owned();
-//     for &d in vector.iter() {
-//         if i >= d.len() {
-//             continue;
-//         }
-//         if i == d.len() - 1 && char::from(d.as_bytes()[i]) == c && d.contains(&ts) {
-//             ts.push(c);
-
-//             return (d.to_string(), ts, true);
-//         }
-//         if char::from(d.as_bytes()[i]) == c && d.contains(&ts) {
-//             ts.push(c);
-//             return ("".to_string(), ts, true);
-//         }
-//     }
-//     ("".to_string(), "".to_string(), false)
-// }
-
-// fn word_to_number(word: &str) -> Option<u8> {
-//     match word.to_lowercase().as_str() {
-//         "eno" => Some(b'1'),
-//         "owt" => Some(b'2'),
-//         "eerht" => Some(b'3'),
-//         "ruof" => Some(b'4'),
-//         "evif" => Some(b'5'),
-//         "xis" => Some(b'6'),
-//         "neves" => Some(b'7'),
-//         "thgie" => Some(b'8'),
-//         "enin" => Some(b'9'),
-//         "one" => Some(b'1'),
-//         "two" => Some(b'2'),
-//         "three" => Some(b'3'),
-//         "four" => Some(b'4'),
-//         "five" => Some(b'5'),
-//         "six" => Some(b'6'),
-//         "seven" => Some(b'7'),
-//         "eight" => Some(b'8'),
-//         "nine" => Some(b'9'),
-//         _ => None,
-//     }
-// }
