@@ -15,6 +15,31 @@ type data struct {
 	bestDistance int
 }
 
+func main() {
+	f, err := os.Open("./input.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+
+	content, err := io.ReadAll(f)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	races, err := parseInput(string(content))
+	if err != nil {
+		panic(err)
+	}
+
+	waysToWin := 1
+	for _, race := range races {
+		waysToWin *= race.getNumWaysToWin()
+	}
+
+	fmt.Println(waysToWin)
+}
+
 func (rd *data) getNumWaysToWin() int {
 	a := -float64(1)
 	b := float64(rd.time)
@@ -49,29 +74,4 @@ func parseInput(fileContents string) ([]data, error) {
 	}
 
 	return racesData, nil
-}
-
-func main() {
-	f, err := os.Open("./input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer f.Close()
-
-	content, err := io.ReadAll(f)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	races, err := parseInput(string(content))
-	if err != nil {
-		panic(err)
-	}
-
-	waysToWin := 1
-	for _, race := range races {
-		waysToWin *= race.getNumWaysToWin()
-	}
-
-	fmt.Println(waysToWin)
 }
